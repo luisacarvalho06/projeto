@@ -1,17 +1,20 @@
 import {FaUser, FaLock} from "react-icons/fa";
-
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./Login.css";
 
+
 const Login = () => {
+    const navigate = useNavigate();
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        alert("Enviando os dados: " + username + " - " + password);
+        navigate("/dashboard");
     };
 
   return (
