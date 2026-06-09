@@ -6,13 +6,3 @@
     text-shadow: #000 1px 1px;
     font-family: Helvetica;
 }
-
-.App {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #0e2f494d;
-    background-size:contain;
-    background-position: center;
-}
