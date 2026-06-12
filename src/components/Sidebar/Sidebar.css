@@ -43,7 +43,9 @@
 
 .sidebar-menu a:hover,
 .sidebar-footer a:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  margin: 0 10px;
 }
 
 .sidebar-menu svg,
@@ -153,4 +155,39 @@
 
 .confirm-btn:hover {
   background: #b91c1c;
+}
+
+.sidebar-menu .active {
+  background: #16a34a;
+  border-radius: 10px;
+  margin: 0 10px;
+}
+
+.sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin: auto 15px 20px;
+  padding: 15px;
+
+  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
+}
+
+.sidebar-user img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.sidebar-user h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.sidebar-user p {
+  font-size: 12px;
+  color: #b8c7d6;
+  margin: 0;
 }

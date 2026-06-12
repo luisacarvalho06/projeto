@@ -33,7 +33,7 @@ function Sidebar() {
 
         <nav className="sidebar-menu">
 
-          <Link to="/dashboard"className={location.pathname === "/dashboard" ? "active" : ""} >
+          <Link to="/dashboard" className={location.pathname === "/dashboard" ? "active" : ""} >
             <FaHome />
             <span>Dashboard</span>
           </Link>
@@ -88,6 +88,18 @@ function Sidebar() {
             <FaSignOutAlt />
             <span>Sair</span>
           </button>
+        </div>
+
+        <div className="sidebar-user">
+          <img
+            src="https://i.pravatar.cc/100"
+            alt="Usuário"
+          />
+
+          <div>
+            <h4>Luisa Carvalho</h4>
+            <p>Administradora</p>
+          </div>
         </div>
 
       </aside>
