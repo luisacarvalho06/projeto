@@ -48,7 +48,7 @@ function Sidebar() {
             <span>Pacientes</span>
           </Link>
 
-          <Link to="/dashboard/profissionis" className={location.pathname === "/dashboard/profissionais" ? "active" : ""} >
+          <Link to="/dashboard/profissionais" className={location.pathname === "/dashboard/profissionais" ? "active" : ""} >
             <FaUserMd />
             <span>Profissionais</span>
           </Link>
@@ -66,6 +66,11 @@ function Sidebar() {
           <Link to="/dashboard/prontuarios" className={location.pathname === "/dashboard/prontuarios" ? "active" : ""} >
             <FaFileMedical />
             <span>Prontuários</span>
+          </Link>
+
+          <Link to="/dashboard/atestado" className={location.pathname === "/dashboard/atestado" ? "active" : ""} >
+            <FaFileMedical />
+            <span>Atestado</span>
           </Link>
 
           <Link to="/dashboard/financeiro" className={location.pathname === "/dashboard/financeiro" ? "active" : ""} >

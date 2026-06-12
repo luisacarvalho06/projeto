@@ -115,3 +115,109 @@ tbody tr:hover {
   background: #0e2f49;
   color: white;
 }
+
+.campo-pesquisa {
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+th {
+  background: #0e2f49;
+  color: white;
+}
+
+th,
+td {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+td button {
+  margin-right: 5px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pacientes-page {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 80px);
+}
+
+.tabela-container {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.paginacao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: white;
+  border-top: 1px solid #ddd;
+  position: sticky;
+  bottom: 0;
+}
+
+.paginacao button {
+  padding: 8px 15px;
+}
+.acoes {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-editar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  background: #6c757d;
+  color: white;
+
+  border: none;
+  border-radius: 6px;
+
+  padding: 8px 12px;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.btn-editar:hover {
+  background: #5a6268;
+}
+
+.btn-excluir {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  background: #dc3545;
+  color: white;
+
+  border: none;
+  border-radius: 6px;
+
+  padding: 8px 12px;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.btn-excluir:hover {
+  background: #bb2d3b;
+}

@@ -5,15 +5,35 @@ import PacienteForm from "./PacienteForm";
 function PacienteModal({
   onClose,
   pacientes,
-  setPacientes
+  setPacientes,
+  pacienteEditando
 }) {
 
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState(
+  pacienteEditando || {
     nome: "",
     cpf: "",
     telefone: "",
     email: ""
-  });
+  }
+);
+
+const editarPaciente = () => {
+
+  const listaAtualizada = pacientes.map(
+    (paciente) =>
+      paciente.id === pacienteEditando.id
+        ? {
+            ...paciente,
+            ...formData
+          }
+        : paciente
+  );
+
+  setPacientes(listaAtualizada);
+
+  onClose();
+};
 
   const salvarPaciente = () => {
 
@@ -70,8 +90,8 @@ function PacienteModal({
             Cancelar
           </button>
 
-          <button onClick={salvarPaciente}>
-            Salvar
+          <button onClick={ pacienteEditando ? editarPaciente : salvarPaciente }>
+            {pacienteEditando ? "Atualizar" : "Salvar"}
           </button>
 
         </div>
