@@ -1,32 +1,94 @@
-.servicos-page {
-  padding: 20px;
-}
-
-.servicos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
-}
-
 .servico-card {
   background: white;
   border-radius: 15px;
-  padding: 25px;
+
+  height: 140px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
   box-shadow: 0 2px 10px rgba(0,0,0,.08);
+
   transition: .3s;
 }
 
 .servico-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.15);
 }
 
 .servico-card h2 {
   color: #0e2f49;
-  margin-bottom: 15px;
+  font-size: 22px;
+  text-align: center;
 }
 
-.servico-card p {
-  margin-bottom: 10px;
-  color: #444;
-  line-height: 1.5;
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,.65);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999;
+}
+
+.servico-modal {
+  background: white;
+
+  width: 700px;
+  max-width: 90%;
+
+  border-radius: 15px;
+
+  padding: 30px;
+
+  animation: abrirModal .25s ease;
+}
+
+.servico-modal h2 {
+  color: #0e2f49;
+  margin-bottom: 20px;
+}
+
+.servico-modal p {
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.fechar-btn {
+  margin-top: 20px;
+
+  background: #0e2f49;
+  color: white;
+
+  border: none;
+
+  padding: 10px 20px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
+.fechar-btn:hover {
+  opacity: .9;
+}
+
+@keyframes abrirModal {
+  from {
+    transform: scale(.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
