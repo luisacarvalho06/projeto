@@ -12,3 +12,80 @@
   outline: none;
   border-color: #0e2f49;
 }
+
+.filtros {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.filtros input,
+.filtros select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status.agendado {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status.confirmado {
+  background: #cce5ff;
+  color: #004085;
+}
+
+.status.realizado {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status.cancelado {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.btn-prontuario {
+  background: #0e2f49;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-prontuario:hover {
+  opacity: 0.9;
+}
+
+.editar-btn {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.excluir-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.excluir-btn:hover {
+  background: #bb2d3b;
+}

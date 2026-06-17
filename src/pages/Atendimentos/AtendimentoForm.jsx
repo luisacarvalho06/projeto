@@ -7,6 +7,23 @@ function AtendimentoForm({
 
     const { pacientes, profissionais } = useClinica();
 
+    const horarios = [];
+
+    for (let hora = 7; hora <= 18; hora++) {
+
+        const inicio = hora === 7 ? 30 : 0;
+
+        for (let minuto = inicio; minuto < 60; minuto += 10) {
+
+            horarios.push(
+                `${String(hora).padStart(2, "0")}:${String(minuto).padStart(2, "0")}`
+            );
+
+        }
+    }
+
+    horarios.push("19:00");
+
     return (
         <div className="form-grid">
 
@@ -105,8 +122,7 @@ function AtendimentoForm({
                 }
             />
 
-            <input
-                type="time"
+            <select
                 value={formData.horario}
                 onChange={(e) =>
                     setFormData({
@@ -114,7 +130,24 @@ function AtendimentoForm({
                         horario: e.target.value
                     })
                 }
-            />
+            >
+
+                <option value="">
+                    Selecione um horário
+                </option>
+
+                {horarios.map((horario) => (
+
+                    <option
+                        key={horario}
+                        value={horario}
+                    >
+                        {horario}
+                    </option>
+
+                ))}
+
+            </select>
 
             <select
                 value={formData.status}
@@ -132,6 +165,16 @@ function AtendimentoForm({
                 <option value="Cancelado">Cancelado</option>
             </select>
 
+            <textarea
+                placeholder="Observações"
+                value={formData.observacoes}
+                onChange={(e) =>
+                    setFormData({
+                        ...formData,
+                        observacoes: e.target.value
+                    })
+                }
+            />
         </div>
     );
 }
