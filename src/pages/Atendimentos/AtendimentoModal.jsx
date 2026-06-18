@@ -1,133 +1,92 @@
 import { useState } from "react";
 import AtendimentoForm from "./AtendimentoForm";
+import { useClinica } from "../../context/ClinicaContext";
 
-function AtendimentoModal({
-    onClose,
-    atendimentos,
-    setAtendimentos,
-    atendimentoEditando
-}) {
+function AtendimentoModal({ onClose, atendimentoEditando }) {
+  const { atendimentos, salvarAtendimento } = useClinica();
 
-    const [formData, setFormData] = useState(
-        atendimentoEditando || {
-            paciente: "",
-            profissional: "",
-            servico: "",
-            data: "",
-            horario: "",
-            status: "",
-            observacoes: ""
-        }
+  const [formData, setFormData] = useState(
+    atendimentoEditando || {
+      paciente: "",
+      profissional: "",
+      servico: "",
+      data: "",
+      horario: "",
+      status: "",
+      observacoes: "",
+    }
+  );
+
+  const handleSalvar = async () => {
+    if (
+      !formData.paciente ||
+      !formData.profissional ||
+      !formData.servico ||
+      !formData.data ||
+      !formData.horario ||
+      !formData.status
+    ) {
+      alert("Preencha todos os campos obrigatórios.");
+      return;
+    }
+
+    const conflito = atendimentos.some(
+      (atendimento) =>
+        atendimento.id !== atendimentoEditando?.id &&
+        atendimento.profissional === formData.profissional &&
+        atendimento.data === formData.data &&
+        atendimento.horario === formData.horario
     );
 
-    const salvarAtendimento = () => {
+    if (conflito) {
+      alert(
+        "Já existe um atendimento agendado para este profissional nesse horário."
+      );
+      return;
+    }
 
-        if (
-            !formData.paciente ||
-            !formData.profissional ||
-            !formData.servico ||
-            !formData.data ||
-            !formData.horario ||
-            !formData.status
-        ) {
-            alert("Preencha todos os campos obrigatórios.");
-            return;
-        }
+    const pacienteDuplicado = atendimentos.some(
+      (atendimento) =>
+        atendimento.id !== atendimentoEditando?.id &&
+        atendimento.paciente === formData.paciente &&
+        atendimento.data === formData.data &&
+        atendimento.horario === formData.horario
+    );
 
-        const conflito = atendimentos.some(
-            (atendimento) =>
+    if (pacienteDuplicado) {
+      alert("Este paciente já possui um atendimento agendado nesse horário.");
+      return;
+    }
 
-                atendimento.id !== atendimentoEditando?.id &&
+    const dados = atendimentoEditando
+      ? { ...formData, id: atendimentoEditando.id }
+      : formData;
 
-                atendimento.profissional === formData.profissional &&
-                atendimento.data === formData.data &&
-                atendimento.horario === formData.horario
-        );
+    const resultado = await salvarAtendimento(dados);
 
-        if (conflito) {
-            alert(
-                "Já existe um atendimento agendado para este profissional nesse horário."
-            );
-            return;
-        }
+    if (resultado) {
+      onClose();
+    } else {
+      alert("Erro ao salvar atendimento. Tente novamente.");
+    }
+  };
 
-        const pacienteDuplicado = atendimentos.some(
-            (atendimento) =>
+  return (
+    <div className="modal-overlay">
+      <div className="modal">
+        <h2>
+          {atendimentoEditando ? "Editar Atendimento" : "Novo Atendimento"}
+        </h2>
 
-                atendimento.id !== atendimentoEditando?.id &&
-                atendimento.paciente === formData.paciente &&
-                atendimento.data === formData.data &&
-                atendimento.horario === formData.horario
-        );
+        <AtendimentoForm formData={formData} setFormData={setFormData} />
 
-        if (pacienteDuplicado) {
-            alert(
-                "Este paciente já possui um atendimento agendado nesse horário."
-            );
-            return;
-        }
-
-        if (atendimentoEditando) {
-
-            const listaAtualizada = atendimentos.map(
-                (atendimento) =>
-                    atendimento.id === atendimentoEditando.id
-                        ? {
-                            ...atendimento,
-                            ...formData
-                        }
-                        : atendimento
-            );
-
-            setAtendimentos(listaAtualizada);
-            onClose();
-
-            return;
-        }
-        const novoAtendimento = {
-            id: Date.now(),
-            ...formData
-        };
-
-        setAtendimentos([
-            ...atendimentos,
-            novoAtendimento
-        ]);
-
-        onClose();
-    };
-    return (
-        <div className="modal-overlay">
-
-            <div className="modal">
-
-                <h2>
-                    {atendimentoEditando
-                        ? "Editar Atendimento"
-                        : "Novo Atendimento"}
-                </h2>
-
-                <AtendimentoForm
-                    formData={formData}
-                    setFormData={setFormData}
-                />
-
-                <div className="modal-actions">
-
-                    <button onClick={onClose}>
-                        Cancelar
-                    </button>
-
-                    <button onClick={salvarAtendimento}>
-                        Salvar
-                    </button>
-
-                </div>
-
-            </div>
-
+        <div className="modal-actions">
+          <button onClick={onClose}>Cancelar</button>
+          <button onClick={handleSalvar}>Salvar</button>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
 
 export default AtendimentoModal;

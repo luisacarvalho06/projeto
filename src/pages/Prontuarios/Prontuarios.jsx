@@ -77,8 +77,6 @@ function Prontuarios() {
             {showModal && (
                 <ProntuarioModal
                     onClose={() => setShowModal(false)}
-                    prontuarios={prontuarios}
-                    setProntuarios={setProntuarios}
                     prontuarioEditando={prontuarioEditando}
                 />
             )}

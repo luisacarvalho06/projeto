@@ -68,11 +68,6 @@ function Sidebar() {
             <span>Prontuários</span>
           </Link>
 
-          <Link to="/dashboard/financeiro" className={location.pathname === "/dashboard/financeiro" ? "active" : ""} >
-            <FaDollarSign />
-            <span>Financeiro</span>
-          </Link>
-
           <Link to="/dashboard/configuracoes" className={location.pathname === "/dashboard/configuracoes" ? "active" : ""} >
             <FaCog />
             <span>Configurações</span>

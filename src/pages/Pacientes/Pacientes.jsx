@@ -65,8 +65,6 @@ function Pacientes() {
       {showModal && (
         <PacienteModal
           onClose={() => setShowModal(false)}
-          pacientes={pacientes}
-          setPacientes={setPacientes}
           pacienteEditando={pacienteEditando}
         />
       )}

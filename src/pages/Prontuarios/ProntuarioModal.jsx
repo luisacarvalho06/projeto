@@ -1,191 +1,130 @@
 import { useState, useEffect } from "react";
 import ProntuarioForm from "./ProntuarioForm";
+import { useClinica } from "../../context/ClinicaContext";
 
-function ProntuarioModal({
-    onClose,
-    prontuarios,
-    setProntuarios,
-    prontuarioEditando
-}) {
+function ProntuarioModal({ onClose, prontuarioEditando }) {
+  const { salvarProntuario, salvarEvolucao } = useClinica();
 
-    const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
+    paciente: "",
+    dataCriacao: "",
+    queixaPrincipal: "",
+    historicoClinico: "",
+    avaliacaoFisica: "",
+    planoTerapeutico: "",
+    observacoes: "",
+  });
+
+  const [novaEvolucao, setNovaEvolucao] = useState("");
+
+  useEffect(() => {
+    if (prontuarioEditando) {
+      setFormData({
+        ...prontuarioEditando,
+      });
+    } else {
+      setFormData({
         paciente: "",
-        dataCriacao: "",
+        dataCriacao: new Date().toLocaleDateString("pt-BR"),
         queixaPrincipal: "",
         historicoClinico: "",
         avaliacaoFisica: "",
         planoTerapeutico: "",
-        observacoes: ""
-    });
+        observacoes: "",
+      });
+    }
+  }, [prontuarioEditando]);
 
-    const [novaEvolucao, setNovaEvolucao] = useState("");
+  const handleSalvar = async () => {
+    if (!formData.paciente || !formData.queixaPrincipal) {
+      alert("Paciente e Queixa Principal são obrigatórios.");
+      return;
+    }
 
-    useEffect(() => {
+    const dados = prontuarioEditando
+      ? { ...formData, id: prontuarioEditando.id }
+      : formData;
 
-        if (prontuarioEditando) {
+    const resultado = await salvarProntuario(dados);
 
-            setFormData({
-                ...prontuarioEditando,
-                evolucoes: prontuarioEditando.evolucoes || []
-            });
+    if (resultado) {
+      onClose();
+    } else {
+      alert("Erro ao salvar prontuário. Tente novamente.");
+    }
+  };
 
-        } else {
+  const handleAdicionarEvolucao = async () => {
+    if (!novaEvolucao.trim()) return;
 
-            setFormData({
-                paciente: "",
-                dataCriacao: new Date()
-                    .toLocaleDateString("pt-BR"),
-                queixaPrincipal: "",
-                historicoClinico: "",
-                avaliacaoFisica: "",
-                planoTerapeutico: "",
-                observacoes: "",
-                evolucoes: []
-            });
-        }
+    // Precisa que o prontuário já exista no Supabase
+    if (!prontuarioEditando?.id) {
+      alert("Salve o prontuário primeiro antes de adicionar evoluções.");
+      return;
+    }
 
-    }, [prontuarioEditando]);
-
-    const salvarProntuario = () => {
-
-        if (
-            !formData.paciente ||
-            !formData.queixaPrincipal
-        ) {
-
-            alert(
-                "Paciente e Queixa Principal são obrigatórios."
-            );
-
-            return;
-        }
-
-        if (prontuarioEditando) {
-
-            setProntuarios(
-                prontuarios.map((prontuario) =>
-                    prontuario.id === prontuarioEditando.id
-                        ? {
-                            ...formData,
-                            id: prontuario.id
-                        }
-                        : prontuario
-                )
-            );
-
-        } else {
-
-            const novoProntuario = {
-                id: Date.now(),
-                ...formData
-            };
-
-            setProntuarios([
-                ...prontuarios,
-                novoProntuario
-            ]);
-        }
-
-        onClose();
+    const evolucao = {
+      prontuario_id: prontuarioEditando.id,
+      data: new Date().toLocaleDateString("pt-BR"),
+      descricao: novaEvolucao,
     };
 
-    const adicionarEvolucao = () => {
+    const resultado = await salvarEvolucao(evolucao);
 
-        if (!novaEvolucao.trim()) return;
+    if (resultado) {
+      setNovaEvolucao("");
+    } else {
+      alert("Erro ao salvar evolução. Tente novamente.");
+    }
+  };
 
-        const evolucao = {
-            id: Date.now(),
-            data: new Date().toLocaleDateString("pt-BR"),
-            texto: novaEvolucao
-        };
+  // Evoluções que já estão salvas no Supabase (vêm via prontuarioEditando)
+  const evolucoesSalvas = prontuarioEditando?.evolucoes || [];
 
-        setFormData({
-            ...formData,
-            evolucoes: [
-                ...formData.evolucoes,
-                evolucao
-            ]
-        });
+  return (
+    <div className="modal-overlay">
+      <div className="modal">
+        <h2>
+          {prontuarioEditando ? "Editar Prontuário" : "Novo Prontuário"}
+        </h2>
 
-        setNovaEvolucao("");
-    };
+        <ProntuarioForm formData={formData} setFormData={setFormData} />
 
-    return (
+        <hr />
 
-        <div className="modal-overlay">
+        <h3>Evoluções</h3>
 
-            <div className="modal">
+        <textarea
+          placeholder="Digite a evolução do paciente..."
+          value={novaEvolucao}
+          onChange={(e) => setNovaEvolucao(e.target.value)}
+        />
 
-                <h2>
-                    {prontuarioEditando
-                        ? "Editar Prontuário"
-                        : "Novo Prontuário"}
-                </h2>
-
-                <ProntuarioForm
-                    formData={formData}
-                    setFormData={setFormData}
-                />
-
-                <hr />
-
-                <h3>Evoluções</h3>
-
-                <textarea
-                    placeholder="Digite a evolução do paciente..."
-                    value={novaEvolucao}
-                    onChange={(e) =>
-                        setNovaEvolucao(e.target.value)
-                    }
-                />
-
-                <div className="evolucoes-lista">
-
-                    {(formData.evolucoes || []).map((evolucao) => (
-
-                        <div
-                            key={evolucao.id}
-                            className="evolucao-card"
-                        >
-
-                            <strong>
-                                {evolucao.data}
-                            </strong>
-
-                            <p>
-                                {evolucao.texto}
-                            </p>
-
-                        </div>
-
-                    ))}
-
-                </div>
-
-                <div className="modal-actions">
-
-                    <button onClick={onClose}>
-                        Cancelar
-                    </button>
-
-                    <button
-                        type="button"
-                        className="btn-evolucao"
-                        onClick={adicionarEvolucao}>
-                        + Evolução
-                    </button>
-
-                    <button onClick={salvarProntuario}>
-                        Salvar
-                    </button>
-
-                </div>
-
+        <div className="evolucoes-lista">
+          {evolucoesSalvas.map((evolucao) => (
+            <div key={evolucao.id} className="evolucao-card">
+              <strong>{evolucao.data}</strong>
+              <p>{evolucao.descricao}</p>
             </div>
-
+          ))}
         </div>
 
-    );
+        <div className="modal-actions">
+          <button onClick={onClose}>Cancelar</button>
+
+          <button
+            type="button"
+            className="btn-evolucao"
+            onClick={handleAdicionarEvolucao}
+          >
+            + Evolução
+          </button>
+
+          <button onClick={handleSalvar}>Salvar</button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default ProntuarioModal;

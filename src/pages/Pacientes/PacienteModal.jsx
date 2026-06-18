@@ -1,103 +1,69 @@
 import { useState } from "react";
 import "./Pacientes.css";
 import PacienteForm from "./PacienteForm";
+import { useClinica } from "../../context/ClinicaContext";
 
-function PacienteModal({
-  onClose,
-  pacientes,
-  setPacientes,
-  pacienteEditando
-}) {
+function PacienteModal({ onClose, pacienteEditando }) {
+  const { salvarPaciente } = useClinica();
 
-const [formData, setFormData] = useState(
-  pacienteEditando || {
-    nome: "",
-    cpf: "",
-    telefone: "",
-    email: ""
-  }
-);
-
-const editarPaciente = () => {
-
-  const listaAtualizada = pacientes.map(
-    (paciente) =>
-      paciente.id === pacienteEditando.id
-        ? {
-            ...paciente,
-            ...formData
-          }
-        : paciente
+  const [formData, setFormData] = useState(
+    pacienteEditando || {
+      nome: "",
+      cpf: "",
+      telefone: "",
+      email: "",
+    }
   );
 
-  setPacientes(listaAtualizada);
+  const handleSalvar = async () => {
+    if (!formData.nome.trim()) {
+      alert("Informe o nome do paciente");
+      return;
+    }
 
-  onClose();
-};
+    if (formData.cpf.length !== 14) {
+      alert("CPF inválido");
+      return;
+    }
 
-  const salvarPaciente = () => {
+    if (formData.telefone.length !== 15) {
+      alert("Telefone inválido");
+      return;
+    }
 
-  if (!formData.nome.trim()) {
-    alert("Informe o nome do paciente");
-    return;
-  }
+    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
+    if (!emailValido) {
+      alert("Email inválido");
+      return;
+    }
 
-  if (formData.cpf.length !== 14) {
-    alert("CPF inválido");
-    return;
-  }
+    const dados = pacienteEditando
+      ? { ...formData, id: pacienteEditando.id }
+      : formData;
 
-  if (formData.telefone.length !== 15) {
-    alert("Telefone inválido");
-    return;
-  }
+    const resultado = await salvarPaciente(dados);
 
-  const emailValido =
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
-
-  if (!emailValido) {
-    alert("Email inválido");
-    return;
-  }
-
-  const novoPaciente = {
-    id: Date.now(),
-    ...formData
+    if (resultado) {
+      onClose();
+    } else {
+      alert("Erro ao salvar paciente. Tente novamente.");
+    }
   };
 
-  setPacientes([
-    ...pacientes,
-    novoPaciente
-  ]);
-
-  onClose();
-};
   return (
     <div className="modal-overlay">
-
       <div className="modal">
+        <h2>{pacienteEditando ? "Editar Paciente" : "Novo Paciente"}</h2>
 
-        <h2>Novo Paciente</h2>
-
-        <PacienteForm
-          formData={formData}
-          setFormData={setFormData}
-        />
+        <PacienteForm formData={formData} setFormData={setFormData} />
 
         <div className="modal-actions">
-
-          <button onClick={onClose}>
-            Cancelar
-          </button>
-
-          <button onClick={ pacienteEditando ? editarPaciente : salvarPaciente }>
+          <button onClick={onClose}>Cancelar</button>
+          <button onClick={handleSalvar}>
             {pacienteEditando ? "Atualizar" : "Salvar"}
           </button>
-
         </div>
-
       </div>
-
     </div>
   );
 }

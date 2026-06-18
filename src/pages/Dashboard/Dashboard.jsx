@@ -8,7 +8,6 @@ import Agenda from "../Agenda/Agenda";
 import Pacientes from "../Pacientes/Pacientes";
 import Profissionais from "../Profissionais/Profissionais";
 import Servicos from "../Servicos/Servicos";
-import Financeiro from "../Financeiro/Financeiro";
 import Whatsapp from "../Whatsapp/Whatsapp";
 import Atendimentos from "../Atendimentos/Atendimentos";
 import Prontuarios from "../Prontuarios/Prontuarios";
@@ -62,10 +61,9 @@ function Dashboard() {
             <Route path="pacientes" element={<Pacientes />} />
             <Route path="profissionais" element={<Profissionais />} />
             <Route path="servicos" element={<Servicos />} />
-            <Route path="financeiro" element={<Financeiro />} />
             <Route path="whatsapp" element={<Whatsapp />} />
             <Route path="atendimentos" element={<Atendimentos />} />
-            <Route path="prontuarios" element={<Prontuarios />} />
+            <Route path="prontuarios" element={<Prontuarios/>} />
 
           </Routes>
         </div>
