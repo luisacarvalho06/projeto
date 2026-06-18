@@ -1,14 +1,54 @@
 @import "tailwindcss";
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html,
 body,
 #root {
-    width: 100%;
-    min-height: 100vh;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ── Tema Claro (padrão) ── */
+:root,
+[data-theme="claro"] {
+  --bg: #f4f6fb;
+  --card-bg: #ffffff;
+  --text: #1a1a2e;
+  --text-muted: #6b7280;
+  --border: #e5e7eb;
+  --primary: #4f6ef7;
+  --primary-dark: #3a5bd9;
+  --hover-bg: #f0f2ff;
+  --input-bg: #ffffff;
+  --sidebar-bg: #ffffff;
+  --sidebar-text: #374151;
+  --sidebar-active: #4f6ef7;
+}
+
+/* ── Tema Escuro ── */
+[data-theme="escuro"] {
+  --bg: #0f0f1a;
+  --card-bg: #1a1a2e;
+  --text: #f0f0f0;
+  --text-muted: #9ca3af;
+  --border: #2d2d44;
+  --primary: #4f6ef7;
+  --primary-dark: #3a5bd9;
+  --hover-bg: #25253a;
+  --input-bg: #25253a;
+  --sidebar-bg: #13131f;
+  --sidebar-text: #d1d5db;
+  --sidebar-active: #4f6ef7;
+}
+
+/* Aplica o fundo geral */
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.2s, color 0.2s;
 }

@@ -1,0 +1,330 @@
+.agenda-page {
+  padding: 2rem;
+  max-width: 1100px;
+}
+
+/* ── Header ── */
+.agenda-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.agenda-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text, #1a1a2e);
+}
+
+.agenda-header p {
+  color: var(--text-muted, #888);
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+.agenda-header-acoes {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-google {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #333;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: box-shadow 0.15s;
+}
+
+.btn-google:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.btn-google.conectado {
+  background: #4f6ef7;
+  color: #fff;
+  border-color: #4f6ef7;
+}
+
+.btn-google:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.google-aviso {
+  font-size: 0.82rem;
+  color: #f59e0b;
+  background: #fef3c7;
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid #fde68a;
+}
+
+/* ── Layout ── */
+.agenda-layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+/* ── Calendário ── */
+.calendario-card {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 14px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.calendario-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text, #1a1a2e);
+}
+
+.calendario-nav button {
+  background: none;
+  border: 1px solid var(--border, #ddd);
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: var(--text, #333);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.calendario-nav button:hover {
+  background: var(--hover-bg, #f0f2ff);
+}
+
+.calendario-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.dia-semana {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted, #888);
+  padding: 4px 0;
+}
+
+.dia-celula {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text, #333);
+  transition: background 0.12s;
+  gap: 2px;
+}
+
+.dia-celula:hover {
+  background: var(--hover-bg, #f0f2ff);
+}
+
+.dia-celula.hoje {
+  font-weight: 700;
+  color: #4f6ef7;
+}
+
+.dia-celula.selecionado {
+  background: #4f6ef7;
+  color: #fff;
+}
+
+.dia-celula.selecionado:hover {
+  background: #3a5bd9;
+}
+
+.dia-bolinha {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #22c55e;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dia-celula.selecionado .dia-bolinha {
+  background: rgba(255,255,255,0.3);
+}
+
+/* ── Lista ── */
+.lista-card {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  min-height: 400px;
+}
+
+.lista-card h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text, #1a1a2e);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lista-count {
+  font-size: 0.78rem;
+  font-weight: 500;
+  background: var(--hover-bg, #f0f2ff);
+  color: #4f6ef7;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+.lista-vazia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  color: var(--text-muted, #aaa);
+  gap: 0.5rem;
+}
+
+.lista-vazia span {
+  font-size: 2.5rem;
+}
+
+.lista-atendimentos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.atendimento-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--bg, #f9f9f9);
+  border: 1px solid var(--border, #eee);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  transition: box-shadow 0.15s;
+}
+
+.atendimento-card:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.atendimento-barra {
+  width: 4px;
+  height: 48px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.atendimento-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.atendimento-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.atendimento-topo strong {
+  font-size: 0.95rem;
+  color: var(--text, #1a1a2e);
+}
+
+.atendimento-horario {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4f6ef7;
+}
+
+.atendimento-detalhes {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--text-muted, #888);
+}
+
+.atendimento-status {
+  font-weight: 600;
+}
+
+.btn-sync-individual {
+  background: none;
+  border: 1px solid var(--border, #ddd);
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.btn-sync-individual:hover {
+  background: var(--hover-bg, #f0f2ff);
+}
+
+/* ── Tema escuro ── */
+[data-theme="escuro"] .agenda-header h1 { color: #e0e6f0; }
+[data-theme="escuro"] .calendario-card,
+[data-theme="escuro"] .lista-card { background: #1a1a2e; border-color: #2d2d44; }
+[data-theme="escuro"] .dia-celula { color: #dde2f0; }
+[data-theme="escuro"] .atendimento-card { background: #25253a; border-color: #3d3d5a; }
+[data-theme="escuro"] .btn-google { background: #25253a; color: #dde2f0; border-color: #3d3d5a; }
+[data-theme="escuro"] .google-aviso { background: #2a2000; border-color: #5a4000; color: #fbbf24; }
+
+.btn-desconectar {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ef4444;
+  background: none;
+  color: #ef4444;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-desconectar:hover {
+  background: #fef2f2;
+}

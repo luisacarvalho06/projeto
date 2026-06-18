@@ -1,7 +1,7 @@
 import { FaUser, FaLock } from "react-icons/fa";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 import "./Login.css";
 
 
@@ -44,14 +44,17 @@ const Login = () => {
                             <input type="checkbox" />
                             Lembre de mim
                         </label>
-                        <a href="#">Esqueceu a senha?</a>
+                        <Link to="/forgot-password">
+                            Esqueceu sua senha?
+                        </Link>
                     </div>
 
                     <button>Entrar</button>
 
                     <div className="signup-link">
                         <p>
-                            Não tem conta? <a href="#">Registrar</a>
+                            Não tem conta?
+                            <Link to="/register"> Criar Conta </Link>
                         </p>
                     </div>
 

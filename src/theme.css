@@ -1,0 +1,223 @@
+/* ================================================================
+   Tema Escuro — adicione este arquivo no main.jsx ou index.css
+   import './theme.css'
+   ================================================================ */
+
+[data-theme="escuro"] {
+
+  /* ── Página geral ── */
+  background-color: #0f0f1a;
+  color: #f0f0f0;
+
+  /* ── Page header ── */
+  .page-header h1 {
+    color: #e0e6f0;
+  }
+
+  .page-header button {
+    background: #4f6ef7;
+  }
+
+  .page-header button:hover {
+    background: #3a5bd9;
+  }
+
+  /* ── Tabelas ── */
+  table {
+    background: #1a1a2e;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  thead {
+    background: #12122a;
+  }
+
+  th {
+    background: #12122a;
+    color: #c8d0e8;
+  }
+
+  td {
+    color: #dde2f0;
+    border-color: #2d2d44;
+  }
+
+  tbody tr:nth-child(even) {
+    background: #1e1e35;
+  }
+
+  tbody tr:hover {
+    background: #25253d;
+  }
+
+  /* ── Botões de ação nas tabelas ── */
+  .btn-editar {
+    background: #3a4a7a;
+  }
+
+  .btn-editar:hover {
+    background: #4f6ef7;
+  }
+
+  .btn-excluir {
+    background: #7a1c2a;
+  }
+
+  .btn-excluir:hover {
+    background: #dc3545;
+  }
+
+  .editar-btn {
+    background: #3a4a7a;
+    color: #e0e6f0;
+  }
+
+  .editar-btn:hover {
+    background: #4f6ef7;
+  }
+
+  .excluir-btn {
+    background: #7a1c2a;
+    color: #f0d0d0;
+  }
+
+  .excluir-btn:hover {
+    background: #dc3545;
+  }
+
+  .prontuario-btn {
+    background: #1e4a3a;
+    color: #a0e0c8;
+  }
+
+  .prontuario-btn:hover {
+    background: #22c55e;
+    color: #fff;
+  }
+
+  /* ── Modais ── */
+  .modal {
+    background: #1a1a2e;
+    color: #f0f0f0;
+    border: 1px solid #2d2d44;
+  }
+
+  .modal h2 {
+    color: #c8d0e8;
+  }
+
+  .modal-actions button:first-child {
+    background: #2d2d44;
+    color: #aaa;
+  }
+
+  .modal-actions button:last-child {
+    background: #4f6ef7;
+    color: white;
+  }
+
+  /* ── Inputs e selects ── */
+  input,
+  select,
+  textarea {
+    background: #25253a !important;
+    color: #f0f0f0 !important;
+    border-color: #3d3d5a !important;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #7a7a9a !important;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #4f6ef7 !important;
+    outline: none;
+  }
+
+  /* ── Campo de pesquisa ── */
+  .campo-pesquisa {
+    background: #25253a;
+    color: #f0f0f0;
+    border-color: #3d3d5a;
+  }
+
+  /* ── Filtros ── */
+  .filtros input,
+  .filtros select {
+    background: #25253a;
+    color: #f0f0f0;
+    border-color: #3d3d5a;
+  }
+
+  /* ── Paginação ── */
+  .paginacao {
+    background: #1a1a2e;
+    border-color: #2d2d44;
+    color: #c8d0e8;
+  }
+
+  .paginacao button {
+    background: #25253a;
+    color: #c8d0e8;
+    border: 1px solid #3d3d5a;
+  }
+
+  /* ── Status badges ── */
+  .status {
+    font-weight: 600;
+  }
+
+  /* ── Form grid inputs ── */
+  .form-grid input {
+    background: #25253a;
+    color: #f0f0f0;
+    border-color: #3d3d5a;
+  }
+
+  /* ── Labels ── */
+  label {
+    color: #c8d0e8;
+  }
+
+  /* ── Cards e containers genéricos ── */
+  .card,
+  .tabela-container {
+    background: #1a1a2e;
+  }
+
+  /* ── Sidebar (caso use variáveis) ── */
+  .sidebar {
+    background: #13131f;
+    border-color: #2d2d44;
+  }
+
+  /* ── Evoluções ── */
+  .evolucao-card {
+    background: #25253a;
+    border-color: #3d3d5a;
+    color: #dde2f0;
+  }
+
+  .evolucao-card strong {
+    color: #a0b0e0;
+  }
+
+  /* ── Botão de evolução ── */
+  .btn-evolucao {
+    background: #1e4a3a;
+    color: #a0e0c8;
+  }
+
+  .btn-evolucao:hover {
+    background: #22c55e;
+    color: #fff;
+  }
+
+  /* ── HR / divisores ── */
+  hr {
+    border-color: #2d2d44;
+  }
+}

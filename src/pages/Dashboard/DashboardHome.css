@@ -1,0 +1,289 @@
+.dh-page {
+  padding: 2rem;
+  max-width: 1200px;
+}
+
+/* ── Saudação ── */
+.dh-greeting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.75rem;
+}
+
+.dh-greeting h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text, #1a1a2e);
+}
+
+.dh-greeting p {
+  color: var(--text-muted, #888);
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+  text-transform: capitalize;
+}
+
+.dh-btn-novo {
+  background: #4f6ef7;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.dh-btn-novo:hover {
+  background: #3a5bd9;
+}
+
+/* ── Cards ── */
+.dh-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.dh-card {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  text-align: left;
+  transition: box-shadow 0.15s, transform 0.1s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.dh-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.dh-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.dh-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.dh-card-label {
+  font-size: 0.78rem;
+  color: var(--text-muted, #888);
+  font-weight: 500;
+}
+
+.dh-card-valor {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ── Layout inferior ── */
+.dh-bottom {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+/* ── Lista de atendimentos ── */
+.dh-lista-card,
+.dh-cal-card {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 14px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.dh-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.dh-section-header h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text, #1a1a2e);
+}
+
+.dh-section-header button {
+  background: none;
+  border: none;
+  color: #4f6ef7;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dh-section-header button:hover {
+  text-decoration: underline;
+}
+
+.dh-vazio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5rem;
+  color: var(--text-muted, #aaa);
+  gap: 0.5rem;
+}
+
+.dh-vazio span { font-size: 2rem; }
+
+.dh-lista {
+  display: flex;
+  flex-direction: column;
+}
+
+.dh-item {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border, #f0f0f0);
+}
+
+.dh-item:last-child {
+  border-bottom: none;
+}
+
+.dh-item-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4f6ef7, #8b5cf6);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.dh-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.dh-item-info strong {
+  font-size: 0.9rem;
+  color: var(--text, #1a1a2e);
+}
+
+.dh-item-info span {
+  font-size: 0.78rem;
+  color: var(--text-muted, #888);
+}
+
+.dh-item-direita {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+}
+
+.dh-item-data {
+  font-size: 0.78rem;
+  color: var(--text-muted, #888);
+}
+
+.dh-item-status {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+/* ── Mini calendário ── */
+.dh-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+
+.dh-cal-header {
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted, #aaa);
+  padding: 4px 0;
+}
+
+.dh-cal-dia {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: var(--text, #333);
+  transition: background 0.12s;
+  gap: 1px;
+}
+
+.dh-cal-dia:hover {
+  background: var(--hover-bg, #f0f2ff);
+}
+
+.dh-cal-dia.hoje {
+  background: #4f6ef7;
+  color: #fff;
+  font-weight: 700;
+}
+
+.dh-cal-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #22c55e;
+  display: block;
+}
+
+.dh-cal-dia.hoje .dh-cal-dot {
+  background: rgba(255,255,255,0.7);
+}
+
+/* ── Tema escuro ── */
+[data-theme="escuro"] .dh-greeting h1 { color: #e0e6f0; }
+[data-theme="escuro"] .dh-card,
+[data-theme="escuro"] .dh-lista-card,
+[data-theme="escuro"] .dh-cal-card { background: #1a1a2e; border-color: #2d2d44; }
+[data-theme="escuro"] .dh-item { border-color: #2d2d44; }
+[data-theme="escuro"] .dh-item-info strong { color: #e0e6f0; }
+[data-theme="escuro"] .dh-cal-dia { color: #dde2f0; }
+[data-theme="escuro"] .dh-section-header h2 { color: #e0e6f0; }
+
+/* ── Responsivo ── */
+@media (max-width: 900px) {
+  .dh-cards { grid-template-columns: repeat(2, 1fr); }
+  .dh-bottom { grid-template-columns: 1fr; }
+}

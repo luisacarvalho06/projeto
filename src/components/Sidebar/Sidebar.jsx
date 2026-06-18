@@ -6,8 +6,7 @@ import {
   FaSpa,
   FaClipboardList,
   FaFileMedical,
-  FaDollarSign,
-  FaChartBar,
+  FaWhatsapp,
   FaCog,
   FaSignOutAlt
 } from "react-icons/fa";
@@ -68,6 +67,11 @@ function Sidebar() {
             <span>Prontuários</span>
           </Link>
 
+          <Link to="/dashboard/whatsapp" className={location.pathname === "/dashboard/whatsapp" ? "active" : ""} >
+            <FaWhatsapp />
+            <span>Whatsapp</span>
+          </Link>
+
           <Link to="/dashboard/configuracoes" className={location.pathname === "/dashboard/configuracoes" ? "active" : ""} >
             <FaCog />
             <span>Configurações</span>
@@ -86,10 +90,7 @@ function Sidebar() {
         </div>
 
         <div className="sidebar-user">
-          <img
-            src="https://i.pravatar.cc/100"
-            alt="Usuário"
-          />
+          <img src="/fotinha.avif" alt="Eu" />
 
           <div>
             <h4>Luisa Carvalho</h4>

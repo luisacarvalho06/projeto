@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Helvetica;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 .login-page {
@@ -10,101 +10,94 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #0e2f494d;
-    background-size: cover;
-    background-position: center;
+    background: #0e2f49;
+    padding: 20px;
 }
+
 .container {
     width: 450px;
-    background-color: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: white;
     padding: 40px;
-    border-radius: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .container h1 {
     text-align: center;
-    font-size: 30px;
-    color: #fff
+    color: #0e2f49;
+    margin-bottom: 25px;
 }
 
 .container .input-field {
     position: relative;
     width: 100%;
-    height: 50px;
-    margin: 30px auto;
+    margin-bottom: 20px;
 }
 
 .input-field input {
     width: 100%;
-    height: 100%;
-    background-color: transparent;
-    outline: none;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 40px;
-    font-size: 16px;
-    color: #fff;
-    padding: 20px 25px;
+    padding: 14px 45px 14px 14px;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #333;
+    background: white;
 }
 
 .input-field input::placeholder {
-    color: #fff;
+    color: #777;
 }
 
 .input-field .icon {
     position: absolute;
-    right: 25px;
+    right: 15px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 18px;
-    color: #fff;
+    color: #0e2f49;
 }
 
-.container .recall-forget {
+.recall-forget {
     display: flex;
     justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
 }
 
 .recall-forget label {
-    color: #fff;
+    color: #333;
 }
 
-.recall-forget input {
-    margin-right: 5px;
-}
-
-.recall-forget a, 
-.signup-link p a {
-    color: #fff;
+.recall-forget a,
+.signup-link a {
+    color: #0e2f49;
     text-decoration: none;
+    font-weight: 600;
 }
 
 .recall-forget a:hover,
-.signup-link p a:hover {
+.signup-link a:hover {
     text-decoration: underline;
 }
 
 .container button {
     width: 100%;
-    height: 50px;
-    background-color: #fff;
+    padding: 14px;
+    background: #0e2f49;
+    color: white;
     border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    text-shadow: none;
-}
-
-.container .signup-link {
+    border-radius: 8px;
     font-size: 15px;
-    text-align: center;
-    margin: 20px 0 10px;
-    text-shadow: none;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
+.container button:hover {
+    background: #15476d;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
